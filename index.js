@@ -31,7 +31,7 @@ module.exports = app => {
       return
     }
 
-    const { draftRelease, lastRelease } = await findReleases({ app, context })
+    const { draftRelease, baseRelease } = await findReleases({ app, context })
     const {
       commits,
       pullRequests: mergedPullRequests
@@ -39,7 +39,7 @@ module.exports = app => {
       app,
       context,
       branch,
-      lastRelease
+      baseRelease
     })
 
     const sortedMergedPullRequests = sortPullRequests(
@@ -51,7 +51,7 @@ module.exports = app => {
     const releaseInfo = generateReleaseInfo({
       commits,
       config,
-      lastRelease,
+      baseRelease,
       mergedPullRequests: sortedMergedPullRequests,
       version: core.getInput('version') || undefined,
       tag: core.getInput('tag') || undefined,

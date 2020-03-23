@@ -6,3 +6,20 @@ runs:
 branding:
   icon: edit-2
   color: orange 
+inputs:
+  tag_name:
+    description: 'Tag name of the release to be updated'
+    required: false
+  tag_from:
+    description: 'Initial tag from which the changelogs should be generated. Defaults to the last commit, tag is not required'
+    required: false
+  tag_to:
+    description: 'Final tag until which the changelogs should be generated. Defaults to last release'
+    required: false
+outputs:
+  id:
+    description: "The ID of the release that was created or updated"
+  html_url:
+    description: "The URL users can navigate to in order to view the release. i.e. https://github.com/octocat/Hello-World/releases/v1.0.0"
+  upload_url:
+    description: "The URL for uploading assets to the release, which could be used by GitHub Actions for additional uses, for example the @actions/upload-release-asset GitHub Action."
